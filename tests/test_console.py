@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines unittests for console.py.
+"""Unittests for console.py are defined.
 Unittest classes:
     TestHBNBCommand_prompting
     TestHBNBCommand_help
@@ -10,11 +10,11 @@ Unittest classes:
     TestHBNBCommand_destroy
     TestHBNBCommand_update
 """
-import os
 import sys
+import os
 import unittest
-import console
 import inspect
+import console
 from datetime import datetime
 from time import sleep
 HBNBCommand = console.HBNBCommand
@@ -26,7 +26,7 @@ from unittest.mock import patch
 
 
 class TestHBNBCommand_prompting(unittest.TestCase):
-    """Unittests for testing prompting of the HBNB command interpreter."""
+    """For testing prompting of the interpreter."""
 
     def test_prompt_string(self):
         self.assertEqual("(hbnb)  ", HBNBCommand.prompt)
@@ -37,7 +37,7 @@ class TestHBNBCommand_prompting(unittest.TestCase):
             self.assertEqual("", output.getvalue().strip())
 
 class TestHBNBCommand_help(unittest.TestCase):
-    """Unittests for testing help messages of the HBNB command interpreter."""
+    """For testing help messages of the interpreter."""
 
     def test_help_quit(self):
         h = "Quit command to exit the program"
@@ -46,7 +46,7 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertEqual(h, output.getvalue().strip())
 
 class TestHBNBCommand_exit(unittest.TestCase):
-    """Unittests for testing exiting from the HBNB command interpreter."""
+    """For testing exiting from the interpreter."""
 
     def test_quit_exits(self):
         with patch("sys.stdout", new=StringIO()) as output:
@@ -57,7 +57,7 @@ class TestHBNBCommand_exit(unittest.TestCase):
             self.assertTrue(HBNBCommand().onecmd("EOF"))
 
 class TestHBNBCommand_create(unittest.TestCase):
-    """Unittests for testing create from the HBNB command interpreter."""
+    """For testing create from the HBNB commands."""
 
     @classmethod
     def setUp(self):
@@ -291,7 +291,7 @@ class TestHBNBCommand_create(unittest.TestCase):
             self.assertEqual(obj.__str__(), output.getvalue().strip())
 
 class TestHBNBCommand_destroy(unittest.TestCase):
-    """Unittests for testing destroy from the HBNB command interpreter."""
+    """Unittests for testing destroy the HBNB commands."""
 
     @classmethod
     def setUp(self):
@@ -323,7 +323,7 @@ class TestHBNBCommand_destroy(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
 class TestHBNBCommand_all(unittest.TestCase):
-    """Unittests for testing all of the HBNB command interpreter."""
+    """Unittests for testing all the HBNB commands."""
 
     @classmethod
     def setUp(self):
@@ -449,7 +449,7 @@ class TestHBNBCommand_all(unittest.TestCase):
             self.assertNotIn("BaseModel", output.getvalue().strip())
 
 class TestHBNBCommand_update(unittest.TestCase):
-    """Unittests for testing update from the HBNB command interpreter."""
+    """Unittests for testing update."""
 
     @classmethod
     def setUp(self):
@@ -597,7 +597,7 @@ class TestHBNBCommand_update(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
 class TestHBNBCommand_count(unittest.TestCase):
-    """Unittests for testing count method of HBNB comand interpreter."""
+    """Unittests for testing count method."""
 
     @classmethod
     def setUp(self):

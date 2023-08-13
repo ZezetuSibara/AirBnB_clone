@@ -1,24 +1,24 @@
 #!/usr/bin/python3
-""" Module of Unittests """
+""" Unittests Module """
 import unittest
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
-from models import storage
 import os
+from models.engine.file_storage import FileStorage
 import json
+from models import storage
 
 
 class FileStorageTests(unittest.TestCase):
-    """ Suite of File Storage Tests """
+    """ File Storage Tests Suite"""
 
     my_model = BaseModel()
 
     def testClassInstance(self):
-        """ Check instance """
+        """ Instance checked """
         self.assertIsInstance(storage, FileStorage)
 
     def testStoreBaseModel(self):
-        """ Test save and reload functions """
+        """ save and reload functions tested """
         self.my_model.full_name = "BaseModel Instance"
         self.my_model.save()
         bm_dict = self.my_model.to_dict()
@@ -28,7 +28,7 @@ class FileStorageTests(unittest.TestCase):
         self.assertEqual(key in all_objs, True)
 
     def testStoreBaseModel2(self):
-        """ Test save, reload and update functions """
+        """ save, reload and update functions tested"""
         self.my_model.my_name = "First name"
         self.my_model.save()
         bm_dict = self.my_model.to_dict()
@@ -57,18 +57,18 @@ class FileStorageTests(unittest.TestCase):
         self.assertEqual(bm_dict['my_name'], "Second name")
 
     def testHasAttributes(self):
-        """verify if attributes exist"""
+        """attributes are verified"""
         self.assertEqual(hasattr(FileStorage, '_FileStorage__file_path'), True)
         self.assertEqual(hasattr(FileStorage, '_FileStorage__objects'), True)
 
     def testsave(self):
-        """verify if JSON exists"""
+        """JSON is verified"""
         self.my_model.save()
         self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
         self.assertEqual(storage.all(), storage._FileStorage__objects)
 
     def testreload(self):
-        """test if reload """
+        """reload is tested"""
         self.my_model.save()
         self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
         dobj = storage.all()
@@ -79,7 +79,7 @@ class FileStorageTests(unittest.TestCase):
             self.assertEqual(dobj[key].to_dict(), value.to_dict())
 
     def testSaveSelf(self):
-        """ Check save self """
+        """save self is checked"""
         msg = "save() takes 1 positional argument but 2 were given"
         with self.assertRaises(TypeError) as e:
             FileStorage.save(self, 100)

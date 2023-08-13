@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
-"""An interactive shell?"""
+"""An shell that is interactive?"""
 
-import cmd
 import re
+import cmd
 import models
 from models.base_model import BaseModel
-from models import storage
 import json
+from models import storage
 from models.user import User
 from models.place import Place
 from models.state import State
@@ -30,33 +30,33 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)  '
 
     def do_EOF(self, line):
-        """Exits console"""
+        """Console is Exited"""
         print("")
         return True
 
     def do_quit(self, line):
-        """Quit command to exit the program"""
+        """Command to exit/quit the program"""
         print("Good Bye!")
         return True
 
     def help_quit(self):
-        """when two arguments involve"""
+        """in the instance where two arguments involve"""
         print('\n'.join(["Quit command to exit the program"]))
 
     def emptyline(self):
-        """ overwriting the emptyline method """
+        """ the emptyline method  is overwritten"""
         return False
         # OR
         # pass
 
     def do_create(self, line):
-        """Creates a new instances of a class"""
+        """A new instances of a class is created"""
         if line:
             try:
                 glo_cls = globals().get(line, None)
                 obj = glo_cls()
                 obj.save()
-                print(obj.id)  # print the id
+                print(obj.id)  # the id is printed
             except Exception:
                 print("** class doesn't exist **")
         else:
@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """print <class name> <id>"""
-        arr = line.split()    # split & assign to varia
+        arr = line.split()    # assign and split to varia
 
         if len(arr) < 1:
             print("** class name missing **")
@@ -80,8 +80,8 @@ class HBNBCommand(cmd.Cmd):
                 print(storage.all()[new_str])
 
     def do_destroy(self, line):
-        """Destroy command deletes an instance based on the class name and id
-        """
+        """Command deletes an instance based on the class name and id
+        are destroyed"""
         arr = line.split()
         if len(arr) < 1:
             print("** class name missing **")
@@ -99,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     # def do_all(self, line):
-    #    """ Print all instances in string representation """
+    #    """ All instances in string representation are printed"""
     #    new_list = []
 
     #    if not line:
@@ -115,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
     #        print(new_list)
 
     def do_all(self, line):
-        """ Print all instances in string representation """
+        """ All instances in string representation are printed"""
         objects = []
         if line == "":
             print([str(value) for key, value in storage.all().items()])
@@ -131,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
                 print(objects)
 
     # def do_all(self, line):
-    #    """ Print all instances in string representation """
+    #    """ All instances in string representation are printed"""
     #    arr = line.split()
     #    if len(arr) > 0 and arr[0] not in storage.class_dict():
     #        print("** class doesn't exist **")
@@ -145,8 +145,8 @@ class HBNBCommand(cmd.Cmd):
     #        print(new_list)
 
     def do_update(self, line):
-        """Update a class instance of a given id by adding or updating
-        a given attribute key/value pair or dictionary.
+        """A class instance of a given id by adding or updating
+        a given attribute key/value pair or dictionary is updated.
         usage:  update <class> <id> <attribute_name> <attribute_value> or
                 <class>.update(<id>, <attribute_name>, <attribute_value>) or
                 <class>.update(<id>, <dictionary>)
@@ -176,7 +176,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def do_count(self, line):
-        """Print the count all class instances"""
+        """Count all class instances is printed"""
         kclass = globals().get(line, None)
         if kclass is None:
             print("** class doesn't exist **")
