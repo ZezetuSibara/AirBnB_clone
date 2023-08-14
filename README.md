@@ -4,7 +4,7 @@ This is our first step towards building our first full Web App: The AirBnB clone
 
 Task 0
  - README, AUTHORS
- - 
+ - You should have an AUTHORS file at the root of your repository, listing all individuals having contributed content to the repository. For format, reference Docker’s AUTHORS page
 Task 1
  - Be pycodestyle compliant!
  - Write beautiful code that passes the pycodestyle checks.
