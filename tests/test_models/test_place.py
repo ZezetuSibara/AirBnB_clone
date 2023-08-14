@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
-"""Test model for Place class"""
+"""Place class Test model"""
 
 import unittest
 import os
 from models.place import Place
 from datetime import datetime
+import uuid
 from time import sleep
 from models.base_model import BaseModel
-import uuid
-
 
 class TestPlace(unittest.TestCase):
-    """Place model class test case"""
+    """Test case for Place model class"""
 
     @classmethod
     def setUpClass(cls):
-        """Setup the unittest"""
+        """The unittest setup"""
         cls.place = Place()
         cls.place.city_id = str(uuid.uuid4())
         cls.place.user_id = str(uuid.uuid4())
@@ -31,7 +30,7 @@ class TestPlace(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        """Clean up the dirt"""
+        """Clean the dirt"""
         del cls.place
         try:
             os.remove("file.json")
@@ -100,7 +99,7 @@ class TestPlace(unittest.TestCase):
             pl.save(None)
 
 class TestPlace_to_dict(unittest.TestCase):
-    """Unittests for testing to_dict method of the Place class."""
+    """to_dict method unnittests."""
 
     def test_to_dict_type(self):
         self.assertTrue(dict, type(Place().to_dict()))

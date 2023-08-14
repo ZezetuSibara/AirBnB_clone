@@ -1,22 +1,22 @@
 #!/usr/bin/python3
-"""Defines unittests for models/state.py.
+"""Unittests for models/state.py are defined.
 Unittest classes:
     TestState_instantiation
     TestState_save
     TestState_to_dict
 """
-import os
-import models
 import unittest
 from datetime import datetime
+import models
 from time import sleep
+import os
 from models.state import State
 from models import storage
 from models.base_model import BaseModel
 
 
 class TestState_instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the State class."""
+    """Unittests for testing instantiation."""
 
     def test_no_args_instantiates(self):
         self.assertEqual(State, type(State()))
@@ -85,7 +85,7 @@ class TestState_instantiation(unittest.TestCase):
             State(id=None, created_at=None, updated_at=None)
 
     def test_8_instantiation(self):
-        """Tests instantiation of State class."""
+        """State class test instantiations."""
 
         b = State()
         self.assertEqual(str(type(b)), "<class 'models.state.State'>")

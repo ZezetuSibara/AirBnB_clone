@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Test model for Review class
+"""Review class Test model
 Unittest classes:
     TestReview_instantiation
     TestReview_save
@@ -10,18 +10,17 @@ import unittest
 import os
 from datetime import datetime
 from time import sleep
+import uuid
 from models import storage
 from models.review import Review
 from models.base_model import BaseModel
-import uuid
-
 
 class TestReview(unittest.TestCase):
-    """Review model class test case"""
+    """Test case for review model class"""
 
     @classmethod
     def setUpClass(cls):
-        """Setup the unittest"""
+        """The unittest setup"""
         cls.review = Review()
         cls.review.user_id = str(uuid.uuid4())
         cls.review.place_id = str(uuid.uuid4())
@@ -29,7 +28,7 @@ class TestReview(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        """Clean up the dirt"""
+        """Clean the dirt"""
         del cls.review
         try:
             os.remove("file.json")
@@ -44,7 +43,7 @@ class TestReview(unittest.TestCase):
 
 
 class TestReview_instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the Review class."""
+    """Unittests for testing instantiations."""
 
     def test_no_args_instantiates(self):
         self.assertEqual(Review, type(Review()))
@@ -125,11 +124,11 @@ class TestReview_instantiation(unittest.TestCase):
             Review(id=None, created_at=None, updated_at=None)
 
 class TestReview(unittest.TestCase):
-    """Review model class test case"""
+    """Test case for Review model class"""
 
     @classmethod
     def setUpClass(cls):
-        """Setup the unittest"""
+        """The unittest setup"""
         cls.review = Review()
         cls.review.user_id = str(uuid.uuid4())
         cls.review.place_id = str(uuid.uuid4())
@@ -137,7 +136,7 @@ class TestReview(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        """Clean up the dirt"""
+        """Clean the dirt"""
         del cls.review
         try:
             os.remove("file.json")

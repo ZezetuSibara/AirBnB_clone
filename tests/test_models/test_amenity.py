@@ -1,30 +1,30 @@
 #!/usr/bin/env python3
-"""Unittest module for the Amenity Class."""
+"""Amenity Class unittest."""
 
 import unittest
 import os
 from models.amenity import Amenity
+import json
 from models.base_model import BaseModel
 import uuid
-import datetime
 import time
+import datetime
 import re
-import json
 from models.engine.file_storage import FileStorage
 from models import storage
 
 class TestAmenity(unittest.TestCase):
-    """Amenity model class test case"""
+    """Test case of the Amenity model"""
 
     @classmethod
     def setUpClass(cls):
-        """Setup the unittest"""
+        """The unittest is setup"""
         cls.amenity = Amenity()
         cls.amenity.name = "Wifi"
 
     @classmethod
     def tearDownClass(cls):
-        """Clean up the dirt"""
+        """Cleaning the dirt"""
         del cls.amenity
         try:
             os.remove("file.json")
@@ -45,7 +45,7 @@ class TestAmenity(unittest.TestCase):
     # OR
     a = Amenity()
     def test_has_attributes(self):
-        """verify if attributes exist"""
+        """attributes are verified if they exist"""
         self.assertTrue(hasattr(self.a, 'name'))
         self.assertTrue(hasattr(self.a, 'id'))
         self.assertTrue(hasattr(self.a, 'created_at'))
@@ -55,16 +55,16 @@ class TestAmenity(unittest.TestCase):
         self.assertIs(type(self.amenity.name), str)
 
     def test_class_exists(self):
-        """tests if class exists"""
+        """tests if class does exists"""
         res = "<class 'models.amenity.Amenity'>"
         self.assertEqual(str(type(self.a)), res)
 
     def test_user_inheritance(self):
-        """test if Amenity is a subclass of BaseModel"""
+        """tests if Amenity is a subclass"""
         self.assertIsInstance(self.a, Amenity)
 
     def test_types(self):
-        """tests if the type of the attribute is the correct one"""
+        """tests the type of the attribute if it is"""
         self.assertIsInstance(self.a.name, str)
         self.assertIsInstance(self.a.id, str)
         self.assertIsInstance(self.a.created_at, datetime.datetime)

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unittest module for the City Class.
+"""The City Class unittest module.
 Unittest classes:
     TestCity_instantiation
     TestCity_save
@@ -7,30 +7,30 @@ Unittest classes:
 """
 
 import unittest
+import os
 from datetime import datetime
 import time
+import json
 import uuid
 from models.city import City
 import re
-import json
 from models.engine.file_storage import FileStorage
-import os
 from models import storage
 from models.base_model import BaseModel
 
 class TestCity(unittest.TestCase):
-    """City model class test case"""
+    """A test case of the City model class"""
 
     @classmethod
     def setUpClass(cls):
-        """Setup the unittest"""
+        """The unittest setup"""
         cls.city = City()
         cls.city.state_id = str(uuid.uuid4())
         cls.city.name = "St. Petesburg"
 
     @classmethod
     def tearDownClass(cls):
-        """Clean up the dirt"""
+        """Clean the dirt"""
         del cls.city
         try:
             os.remove("file.json")

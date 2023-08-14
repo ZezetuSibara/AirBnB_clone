@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines unittests for models/base_model.py.
+"""Unittests for models/base_model.py are defined.
 Unittest classes:
     TestBaseModel_instantiation
     TestBase_Instance_Print
@@ -10,18 +10,18 @@ Unittest classes:
 from fileinput import lineno
 import unittest
 from models import storage
-from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
-from datetime import datetime
-from time import sleep
-import time
-import uuid
-import json
-import os
 import re
+from models.base_model import BaseModel
+import time
+from models.engine.file_storage import FileStorage
+import uuid
+from datetime import datetime
+import os
+from time import sleep
+import json
 
 class TestBaseModel_Instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the BaseModel class."""
+    """Unittests for testing instantiation."""
 
     def test_IsInstanceOf(self):
         """Test instance"""
@@ -31,12 +31,12 @@ class TestBaseModel_Instantiation(unittest.TestCase):
         self.assertTrue(issubclass(type(b1), BaseModel))
 
     def test_ContainsId(self):
-        """Test if id attribute exists"""
+        """Check for id attribute"""
         b1 = BaseModel()
         self.assertTrue(hasattr(b1, "id"))
 
     def test_IdType(self):
-        """Test if `id` attribute type"""
+        """Test `id` attribute"""
         b1 = BaseModel()
         self.assertEqual(type(b1.id), str)
 
@@ -47,7 +47,7 @@ class TestBaseModel_Instantiation(unittest.TestCase):
         self.assertNotEqual(b1.id, b2.id)
 
     def test_uuid(self):
-        """Test that id is a valid uuid"""
+        """Test if id is a valid uuid"""
         b1 = BaseModel()
         b2 = BaseModel()
         for inst in [b1, b2]:
@@ -61,7 +61,7 @@ class TestBaseModel_Instantiation(unittest.TestCase):
         self.assertNotEqual(b1.id, b2.id)
 
     def test_uniq_id(self):
-        """Tests for unique user ids."""
+        """The unique user ids. tests"""
         u = [BaseModel().id for i in range(1000)]
         self.assertEqual(len(set(u)), len(u))
 
@@ -74,27 +74,27 @@ class TestBaseModel_Instantiation(unittest.TestCase):
         self.assertIn(BaseModel(), storage.all().values())
 
     def test_ContainsCreated_at(self):
-        """Checks `created_at` attribute existence"""
+        """Checks `created_at` attribute"""
         b1 = BaseModel()
         self.assertTrue(hasattr(b1, "created_at"))
 
     def test_Created_atInstance(self):
-        """Checks `created_at` attribute's type"""
+        """Checks `created_at` attribute"""
         b1 = BaseModel()
         self.assertIsInstance(b1.created_at, datetime)
 
     def test_ContainsUpdated_at(self):
-        """Checks `updated_at` attribute existence"""
+        """Checks `updated_at` attribute"""
         b1 = BaseModel()
         self.assertTrue(hasattr(b1, "updated_at"))
 
     def test_Updated_atInstance(self):
-        """Check `updated_at` attribute type"""
+        """Checks `updated_at` atribute"""
         b1 = BaseModel()
         self.assertIsInstance(b1.updated_at, datetime)
 
     def test_datetime_created(self):
-        """Tests if updated_at & created_at are current at creation."""
+        """Tests if updated_at & created_at are current."""
         date_now = datetime.now()
         b1 = BaseModel()
         diff = b1.updated_at - b1.created_at
@@ -148,22 +148,22 @@ class TestBaseModel_Instantiation(unittest.TestCase):
         self.assertEqual(b1.updated_at, dt)
 
 class TestBaseModel_Instance_Print(unittest.TestCase):
-    """Unittest for testing the __str__ method."""
+    """The __str__ method unittest."""
 
     def test_str_return(self):
-        """Unittest for testing the return value of __str__ method."""
+        """The __str__ method return value unittest."""
         b1 = BaseModel()
         Dika = "[{}] ({}) {}".format("BaseModel", b1.id, str(b1.__dict__))
         self.assertEqual(str(b1), Dika)
 
     def test_str(self):
-        """test that the str method has the correct output"""
+        """The str method correct output unittest"""
         b1 = BaseModel()
         string = "[BaseModel] ({}) {}".format(b1.id, b1.__dict__)
         self.assertEqual(string, str(b1))
 
     def test_of_str(self):
-        """Tests for __str__ method."""
+        """The __str__ method test."""
         b1 = BaseModel()
         rex = re.compile(r"^\[(.*)\] \((.*)\) (.*)$")
         res = rex.match(str(b1))
@@ -179,10 +179,10 @@ class TestBaseModel_Instance_Print(unittest.TestCase):
         self.assertEqual(d, d2)
 
 class TestBaseModel_Save_Method(unittest.TestCase):
-    """Unittest for testing the save method."""
+    """The save method unittest."""
 
     def test_validates_save(self):
-        """Check save models"""
+        """Save models checked"""
         b1 = BaseModel()
         updated_at_1 = b1.updated_at
         b1.save()
@@ -213,16 +213,16 @@ class TestBaseModel_Save_Method(unittest.TestCase):
             b1.save(None)
 
 class TestBaseModel_to_Dict_Method(unittest.TestCase):
-    """Unittest for testing the to_dict method of the BaseModel class."""
+    """Unittest for testing the to_dict."""
 
     def test_className_present(self):
-        """Test className present"""
+        """Test className"""
         b1 = BaseModel()
         dic = b1.to_dict()
         self.assertNotEqual(dic, b1.__dict__)
 
     def test_attribute_ISO_format(self):
-        """Test datetime field isoformated"""
+        """Test datetime field"""
         b1 = BaseModel()
         dic = b1.to_dict()
         self.assertEqual(type(dic['created_at']), str)
