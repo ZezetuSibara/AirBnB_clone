@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(arr) < 2:
             print("** instance id missing **")
         else:
-            new_str = f"{arr[0]}.{arr[1]}"
+            new_str = "{}.{}".format(arr[0], arr[1])
             if new_str not in storage.all():
                 print("** no instance found **")
             else:
@@ -90,7 +90,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(arr) < 2:
             print("** instance id missing **")
         else:
-            new_str = f"{arr[0]}.{arr[1]}"
+            new_str = "{}.{}".format(arr[0], arr[1])
             if new_str not in storage.all().keys():
                 print("** no instance found **")
             else:
@@ -162,7 +162,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
         else:
-            new_str = f"{arr[0]}.{arr[1]}"
+            new_str = "{}.{}".format(arr[0], arr[1])
             if new_str not in storage.all().keys():
                 print("** no instance found **")
             elif len(arr) < 3:
