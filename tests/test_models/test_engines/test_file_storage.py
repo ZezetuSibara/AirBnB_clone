@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
 """
-Unittest for FileStorage class
+Unittest module for FileStorage
 """
 
 from datetime import datetime
 import io
-import json
 from models import storage
+import json
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
@@ -17,15 +17,15 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 
-from os import path, remove
 import unittest
+from os import path, remove
 
 
 class Test_all(unittest.TestCase):
-    """ Test for the all method """
+    """ The all method is tested """
 
     def setUp(self):
-        """ Set up for all methods """
+        """ The all methods are set up """
         try:
             remove("file.json")
         except:
@@ -33,60 +33,60 @@ class Test_all(unittest.TestCase):
         FileStorage._FileStorage__objects = {}
 
     def tearDown(self):
-        """ Tear down for all methods """
+        """ The all methods Tear down """
         try:
             remove("file.json")
         except:
             pass
 
     def test_all_empty(self):
-        """ Test Empty Dictionary """
+        """ Empty Dictionary  is tested """
         self.assertEqual(storage.all(), {})
 
     def test_basemodel(self):
-        """ Test with basemodel object """
+        """ Basemodel object is tested """
         b = BaseModel()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
         self.assertEqual(storage.all(), dic)
 
     def test_user(self):
-        """ Test with basemodel object """
+        """ Basemodel object is tested """
         b = User()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
         self.assertEqual(storage.all(), dic)
 
     def test_city(self):
-        """ Test with basemodel object """
+        """ Basemodel object is tested """
         b = City()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
         self.assertEqual(storage.all(), dic)
 
     def test_amenity(self):
-        """ Test with basemodel object """
+        """ Test the basemodel object """
         b = Amenity()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
         self.assertEqual(storage.all(), dic)
 
     def test_place(self):
-        """ Test with basemodel object """
+        """ Test the basemodel object """
         b = Place()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
         self.assertEqual(storage.all(), dic)
 
     def test_review(self):
-        """ Test with basemodel object """
+        """ Test the basemodel object """
         b = Review()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
         self.assertEqual(storage.all(), dic)
 
     def test_state(self):
-        """ Test with basemodel object """
+        """ Test the basemodel """
         b = State()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
@@ -239,7 +239,7 @@ class Test_save(unittest.TestCase):
             pass
 
     def test_save_base(self):
-        """ Save method with base model """
+        """ A method with base model is saved """
         dic = {"id": "123"}
         b = BaseModel(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -254,7 +254,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(b.__class__.__name__, pobj[key]["__class__"])
 
     def test_save_base_no_dic(self):
-        """ Save method with base model no kwarg """
+        """ A method with base model is saved """
         b = BaseModel()
         key = b.__class__.__name__ + '.' + b.id
         fname = "file.json"
@@ -267,7 +267,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(b.__class__.__name__, pobj[key]["__class__"])
 
     def test_save_base_no_dicX2(self):
-        """ Save method with base model no kwarg """
+        """ A method with base model is saved """
         b = BaseModel()
         b2 = BaseModel()
         key = b.__class__.__name__ + '.' + b.id
@@ -284,7 +284,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(b2.__class__.__name__, pobj[key2]["__class__"])
 
     def test_save_user(self):
-        """ Save method with user """
+        """ A method to save the user """
         dic = {"id": "123"}
         b = User(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -299,7 +299,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(b.__class__.__name__, pobj[key]["__class__"])
 
     def test_save_user(self):
-        """ Save method with user """
+        """ A method to save the user """
         dic = {"id": "123"}
         b = User(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -314,7 +314,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(b.__class__.__name__, pobj[key]["__class__"])
 
     def test_save_city(self):
-        """ Save method with city """
+        """ A method to save the city """
         dic = {"id": "123"}
         b = City(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -329,7 +329,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(b.__class__.__name__, pobj[key]["__class__"])
 
     def test_save_amenity(self):
-        """ Save method with amenity """
+        """ A method to save the amenity """
         dic = {"id": "123"}
         b = Amenity(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -344,7 +344,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(b.__class__.__name__, pobj[key]["__class__"])
 
     def test_save_place(self):
-        """ Save method with place """
+        """ A method to save the place """
         dic = {"id": "123"}
         b = Place(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -359,7 +359,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(b.__class__.__name__, pobj[key]["__class__"])
 
     def test_save_review(self):
-        """ Save method with review """
+        """ A method to save the review """
         dic = {"id": "123"}
         b = Review(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -374,7 +374,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(b.__class__.__name__, pobj[key]["__class__"])
 
     def test_save_state(self):
-        """ Save method with state """
+        """ A method to save with state """
         dic = {"id": "123"}
         b = State(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -389,7 +389,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(b.__class__.__name__, pobj[key]["__class__"])
 
     def test_save_all_class(self):
-        """ Save method with all_classes """
+        """ A method to save all_classes """
         dic = {"id": "123"}
         b = BaseModel(**dic)
         u = User(**dic)
@@ -434,7 +434,7 @@ class Test_save(unittest.TestCase):
             self.assertEqual(s.__class__.__name__, pobj[keys]["__class__"])
 
     def test_save_all_class_no_kwarg(self):
-        """ Save method with all_classes no kwarg"""
+        """ A method to save for all_classes no kwarg"""
         b = BaseModel()
         u = User()
         c = City()
@@ -472,10 +472,10 @@ class Test_save(unittest.TestCase):
 
 
 class Test_reload(unittest.TestCase):
-    """ Test for the new method """
+    """ Test a new method """
 
     def setUp(self):
-        """ Set up for all methods """
+        """ Fix all methods """
         try:
             remove("file.json")
         except:
@@ -483,20 +483,20 @@ class Test_reload(unittest.TestCase):
         FileStorage._FileStorage__objects = {}
 
     def tearDown(self):
-        """ Tear down for all methods """
+        """ A Tear down for all """
         try:
             remove("file.json")
         except:
             pass
 
     def test_no_file(self):
-        """ Test if no error happens when to file is present """
+        """ When the file is present, test if there is an error """
         fname = "file.json"
         self.assertFalse(path.isfile(fname))
         storage.reload()
 
     def test_reload_base(self):
-        """ Test reload method with base model """
+        """ Test the reload method for basemodel """
         fname = "file.json"
         b = BaseModel()
         b.name = "Holberton"
@@ -517,7 +517,7 @@ class Test_reload(unittest.TestCase):
         self.assertEqual(b.name, alldic[key].name)
 
     def test_reload_user(self):
-        """ Test reload method with user """
+        """ Test the reload method for user """
         fname = "file.json"
         b = User()
         b.name = "Holberton"
@@ -538,7 +538,7 @@ class Test_reload(unittest.TestCase):
         self.assertEqual(b.name, alldic[key].name)
 
     def test_reload_city(self):
-        """ Test reload method with city """
+        """ Test the reload method for city """
         fname = "file.json"
         b = City()
         b.name = "Holberton"
@@ -559,7 +559,7 @@ class Test_reload(unittest.TestCase):
         self.assertEqual(b.name, alldic[key].name)
 
     def test_reload_amenity(self):
-        """ Test reload method with amenity """
+        """ Test the reload method for amenity """
         fname = "file.json"
         b = Amenity()
         b.name = "Holberton"
@@ -580,7 +580,7 @@ class Test_reload(unittest.TestCase):
         self.assertEqual(b.name, alldic[key].name)
 
     def test_reload_place(self):
-        """ Test reload method with place """
+        """ Test the reload method for place """
         fname = "file.json"
         b = Place()
         b.name = "Holberton"
@@ -601,7 +601,7 @@ class Test_reload(unittest.TestCase):
         self.assertEqual(b.name, alldic[key].name)
 
     def test_reload_review(self):
-        """ Test reload method with review """
+        """ Test the reload method for review """
         fname = "file.json"
         b = Review()
         b.name = "Holberton"
@@ -622,7 +622,7 @@ class Test_reload(unittest.TestCase):
         self.assertEqual(b.name, alldic[key].name)
 
     def test_reload_state(self):
-        """ Test reload method with state """
+        """ Test the reload method for state """
         fname = "file.json"
         b = State()
         b.name = "Holberton"
@@ -643,7 +643,7 @@ class Test_reload(unittest.TestCase):
         self.assertEqual(b.name, alldic[key].name)
 
     def test_reload_all_clases(self):
-        """ Test reload method for all classes """
+        """ Test the reload method for all """
         fname = "file.json"
         b = BaseModel()
         u = User()
