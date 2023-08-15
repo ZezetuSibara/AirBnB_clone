@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
-"""An interactive shell?"""
+"""A Shell that is interactive"""
 
-import cmd
-import re
 import models
+import re
 from models.base_model import BaseModel
-from models import storage
 import json
+from models import storage
+import cmd
 from models.user import User
 from models.place import Place
 from models.state import State
@@ -30,27 +30,27 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)  '
 
     def do_EOF(self, line):
-        """Exits console"""
+        """Console Exited """
         print("")
         return True
 
     def do_quit(self, line):
-        """Quit command to exit the program"""
+        """Quit command for exiting the program"""
         print("Good Bye!")
         return True
 
     def help_quit(self):
-        """when two arguments involve"""
+        """when there are two arguments"""
         print('\n'.join(["Quit command to exit the program"]))
 
     def emptyline(self):
-        """ overwriting the emptyline method """
+        """ A method for overwriting an emptyline """
         return False
         # OR
         # pass
 
     def do_create(self, line):
-        """Creates a new instances of a class"""
+        """A new instances created """
         if line:
             try:
                 glo_cls = globals().get(line, None)
@@ -80,8 +80,7 @@ class HBNBCommand(cmd.Cmd):
                 print(storage.all()[new_str])
 
     def do_destroy(self, line):
-        """Destroy command deletes an instance based on the class name and id
-        """
+        """Destroy command deletes an instance """
         arr = line.split()
         if len(arr) < 1:
             print("** class name missing **")
@@ -99,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     # def do_all(self, line):
-    #    """ Print all instances in string representation """
+    #    """ Print all instances in string """
     #    new_list = []
 
     #    if not line:
@@ -115,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
     #        print(new_list)
 
     def do_all(self, line):
-        """ Print all instances in string representation """
+        """ Print all instances in string """
         objects = []
         if line == "":
             print([str(value) for key, value in storage.all().items()])
@@ -131,7 +130,7 @@ class HBNBCommand(cmd.Cmd):
                 print(objects)
 
     # def do_all(self, line):
-    #    """ Print all instances in string representation """
+    #    """ Print all instances in string """
     #    arr = line.split()
     #    if len(arr) > 0 and arr[0] not in storage.class_dict():
     #        print("** class doesn't exist **")
@@ -145,9 +144,8 @@ class HBNBCommand(cmd.Cmd):
     #        print(new_list)
 
     def do_update(self, line):
-        """Update a class instance of a given id by adding or updating
-        a given attribute key/value pair or dictionary.
-        usage:  update <class> <id> <attribute_name> <attribute_value> or
+        """Update a class instance.
+        use:  update <class> <id> <attribute_name> <attribute_value> or
                 <class>.update(<id>, <attribute_name>, <attribute_value>) or
                 <class>.update(<id>, <dictionary>)
         """
@@ -176,7 +174,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def do_count(self, line):
-        """Print the count all class instances"""
+        """Print the count of all"""
         kclass = globals().get(line, None)
         if kclass is None:
             print("** class doesn't exist **")

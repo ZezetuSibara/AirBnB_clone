@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 
 """
-Unittest module for FileStorage
+Unittest module for FileStorage are defined.
 """
-
-from datetime import datetime
 import io
-from models import storage
+from datetime import datetime
 import json
+from models import storage
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
@@ -65,35 +64,35 @@ class Test_all(unittest.TestCase):
         self.assertEqual(storage.all(), dic)
 
     def test_amenity(self):
-        """ Test the basemodel object """
+        """ Basemodel object is tested """
         b = Amenity()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
         self.assertEqual(storage.all(), dic)
 
     def test_place(self):
-        """ Test the basemodel object """
+        """ The basemodel object is tested"""
         b = Place()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
         self.assertEqual(storage.all(), dic)
 
     def test_review(self):
-        """ Test the basemodel object """
+        """ The basemodel object tested"""
         b = Review()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
         self.assertEqual(storage.all(), dic)
 
     def test_state(self):
-        """ Test the basemodel """
+        """ The basemodel is tested """
         b = State()
         name = b.__class__.__name__ + '.' + b.id
         dic = {name: b}
         self.assertEqual(storage.all(), dic)
 
     def test_all_class(self):
-        """ Test with all classes """
+        """ Test with classes """
         b = BaseModel()
         u = User()
         c = City()
@@ -114,10 +113,10 @@ class Test_all(unittest.TestCase):
 
 
 class Test_new(unittest.TestCase):
-    """ Test for the new method """
+    """ New method tested """
 
     def setUp(self):
-        """ Set up for all methods """
+        """ All methods are set up """
         try:
             remove("file.json")
         except:
@@ -125,25 +124,25 @@ class Test_new(unittest.TestCase):
         FileStorage._FileStorage__objects = {}
 
     def tearDown(self):
-        """ Tear down for all methods """
+        """ Tear down for every methods """
         try:
             remove("file.json")
         except:
             pass
 
     def test_no_arg(self):
-        """ Test no passing argument """
+        """ No passing argument tested """
         with self.assertRaises(TypeError):
             storage.new()
 
     def test_extra_arg(self):
-        """ Test no passing argument """
+        """ No passing argument tested """
         b = BaseModel()
         with self.assertRaises(TypeError):
             storage.new(b, b)
 
     def test_basenew(self):
-        """ Tests new method with basemodel """
+        """ New method tested with basemodel """
         dic = {"id": "123"}
         b = BaseModel(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -154,7 +153,7 @@ class Test_new(unittest.TestCase):
         self.assertEqual(b, alldic[key])
 
     def test_usernew(self):
-        """ Tests new method with user """
+        """ New method with user is tested """
         dic = {"id": "123"}
         b = User(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -165,7 +164,7 @@ class Test_new(unittest.TestCase):
         self.assertEqual(b, alldic[key])
 
     def test_city(self):
-        """ Tests new method with city """
+        """ New method is tested with city """
         dic = {"id": "123"}
         b = City(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -176,7 +175,7 @@ class Test_new(unittest.TestCase):
         self.assertEqual(b, alldic[key])
 
     def test_amenity(self):
-        """ Tests new method with amenity """
+        """ New method is tested with amenity """
         dic = {"id": "123"}
         b = Amenity(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -187,7 +186,7 @@ class Test_new(unittest.TestCase):
         self.assertEqual(b, alldic[key])
 
     def test_place(self):
-        """ Tests new method with amenity """
+        """ New method is tested with amenity """
         dic = {"id": "123"}
         b = Place(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -198,7 +197,7 @@ class Test_new(unittest.TestCase):
         self.assertEqual(b, alldic[key])
 
     def test_review(self):
-        """ Tests new method with review """
+        """ New method is tested with review """
         dic = {"id": "123"}
         b = Review(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -209,7 +208,7 @@ class Test_new(unittest.TestCase):
         self.assertEqual(b, alldic[key])
 
     def test_state(self):
-        """ Tests new method with state """
+        """ New method is tested with state """
         dic = {"id": "123"}
         b = State(**dic)
         key = b.__class__.__name__ + '.' + "123"
@@ -221,10 +220,10 @@ class Test_new(unittest.TestCase):
 
 
 class Test_save(unittest.TestCase):
-    """ Test for the new method """
+    """ Test the new method """
 
     def setUp(self):
-        """ Set up for all methods """
+        """ Set up all methods """
         try:
             remove("file.json")
         except:
@@ -232,7 +231,7 @@ class Test_save(unittest.TestCase):
         FileStorage._FileStorage__objects = {}
 
     def tearDown(self):
-        """ Tear down for all methods """
+        """ Tear down all methods """
         try:
             remove("file.json")
         except:
